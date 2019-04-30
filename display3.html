@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Olletr</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="display3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="de3.js"></script>
+</head>
+<body>
+    <div class="de3_box container-fluid">
+        <div class="de3_close_button">
+            <button><span class="glyphicon glyphicon-remove"></span></button>
+        </div>
+        <div class="de3_head">
+                <h3 class="de3_name_display" onclick="de3_nameEdit()">Ten the</h3>
+                <div class="de3_name_edit"></div>
+            <p class="de3_in_list">
+                Thuộc danh sách
+                <a href="">link list</a>
+            </p>
+        </div>
+        <hr>
+        <div class="de3_body">
+            <div class="de3_main_col col-md-8">
+                    <div class="de3_describe">
+                        <p class="describe_editable">
+                            Mô tả
+                            <button data-toggle="collapse" data-target="#describe_editable" class="glyphicon glyphicon-edit"></button>
+                            <div id="describe_editable" class="collapse">
+                                <form class="describe_edit">
+                                    <input class="describe_box box" placeholder="Thêm mô tả về danh sách này" type="text"></input>
+                                    <div class="describe_control">
+                                            <input class="control_save" type="submit" value="Lưu" onclick="edit_describe()">
+                                            <input class="control_cancel" type="button" value="Hủy">
+                                    </div>
+                                </form>          
+                            </div>
+                        </p>
+                        <div class="describe_content">ND mo ta</div>             
+                    </div>
+
+                    <div class="de3_detail">
+                        <ul class="list-inline">
+                            <li class="de3_detail_label">
+                                <div class="label_head"><h4>Nhãn</h4></div>
+                                <div class="label_body">
+                                    <span class="label_color">nhanx</span>
+                                </div>
+                            </li>
+                            <li class="de3_detail_deadline" onload="deadline_display()">
+                                <div class="deadline_head"><h4>Deadline</h4></div>
+                                <div class="deadline_body">
+                                    <span class="deadline_date">ngyaf</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="de3_file">
+                        <div class="file_head"><h4>File đính kèm</h4></div>
+                        <div class="file_body">
+                            <div class="file_list list-group">
+                                <a href="#" class="file_list_item list_group_item active"></a>
+                            </div>
+                            <div class="file_add">
+                                <a class="file_add_button btn" href="#">Thêm tệp đính kèm</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="de3_comment">
+                        <h4>Thêm bình luận</h4>
+                        <div class="new_cmt">
+                            <div class="cmt_ava"></div>
+                            <div class="cmt_box">
+                                <textarea class="cmt_box_input box" placeholder="Viết bình luận"></textarea>
+                                <div class="cmt_box_control">
+                                    <input class="control_save" type="submit" value="Lưu">
+                                    <input class="control_cancel" type="button" value="Hủy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+
+                    <div class="de3_activity">
+                        <div class="activity_head"><h4>Hoạt động</h4></div>
+                        <div class="activity_body">
+                            <div class="activity_list">
+                                <div class="media">
+                                    <div class="media-left">
+                                      <img src="" class="media-object" style="width:60px">
+                                    </div>
+                                    <div class="media-body">
+                                      <h4 class="media-heading">name</h4>
+                                      <p>cmt</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>            
+            </div>
+            <div class="de3_side_bar col-md-4">
+                <h4>Thêm vào thẻ</h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a class="js-change-label  btn btn-link" title="Change label" href="#">Thay đổi nhãn</a></li>
+                    <li><a class="js-change-deadline  btn btn-link" title="Change deadline" href="#">Ngày hết hạn</a></li>
+                    <li><a class="js-change-add-file  btn btn-link" title="Add file" href="#">File đính kèm</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="de3_popup">
+        <div class="popup_head">
+            <span class="popup_head_title"></span>
+            <span class="popup_close_button icon-close">
+                <button class="glyphicon glyphicon-remove"></button>
+            </span>
+        </div>
+        <hr>
+        <div class="popup_body">
+            <div class="popup_body_content">
+                <div class="popup_label">
+                    <ul class="label_list">
+                        <li class="label1"><span class="label green" data-color="green">green</span></li>
+                        <li class="label1"><span class="label yellow" data-color="yellow">y</span></li>
+                        <li class="label1"><span class="label orange" data-color="orange">o</span></li>
+                        <li class="label1"><span class="label red" data-color="red">r</span></li>
+                        <li class="label1"><span class="label blue" data-color="blue">b</span></li>
+                    </ul>
+                </div>
+                <div class="popup_deadline">
+                    <form class="popup_deadline_body">
+                        <div class="deadline_date">
+                            <label>
+                                Ngày
+                                <input class="date_input" type="text" placeholder="Nhập ngày">
+                            </label>
+                        </div>
+                        <div class="deadline_time">
+                            <label>
+                                Giờ
+                                <input class="time_input" type="text" placeholder="Nhập giờ">
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="popup_addfile">
+                    <div class="add_file_computer">
+                        <button class="add_file_btn glyphicon glyphicon-plus">
+                            <form action="" method="post" class="add_file_input"></form>
+                        </button>
+                    </div>
+                    <div class="add_file_link">
+                        <label for="add_link">Đính kèm liên kết</label>
+                        <input class="add_link_input" type="text" placeholder="Dán liên kết vào đây">
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="popup_body_control">
+                <input class="control_save" type="submit" value="Lưu">
+                <input class="control_cancel" type="button" value="Hủy">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
