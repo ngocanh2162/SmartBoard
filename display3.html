@@ -6,9 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS\display3.css">
+    <link rel="stylesheet" href="CSS\jquery.datetimepicker.min.css">
+    <link rel="stylesheet" href="CSS\popup.css">
+    <link rel="stylesheet" href="CSS\progressbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="JS\de3.js"></script>
+    <script src="JS\jquery.datetimepicker.full.js"></script>
+    <script src="JS\popup.js"></script>
+    <script src="JS\jquery.js"></script>
+    <script src="JS\progressbar.js"></script>
+    <script src="JS\sidebar.js"></script>
 </head>
 <body>
     <div class="de3_box container-fluid">
@@ -16,12 +24,26 @@
             <button><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="de3_head">
-                <h3 class="de3_name_display" onclick="de3_nameEdit()">Ten the</h3>
-                <div class="de3_name_edit"></div>
+            <?php
+            include("dbconnect.php");
+            $x = mysqli_query($connect, "SELECT * FROM task WHERE `task`.`taskid`=");
+            $y = mysqli_query($connect, "SELECT list_name from list where `idlist` = ");
+            $result_task = mysqli_fetch_array($x);
+            $result_list = mysqli_fetch_array($y);
+            $task_name = $x['task_name'];
+            $list_name = $y['list_name'];
+            echo "
+            <h3 class='de3_name_display' onclick='de3_nameEdit()'>$task_name</h3>
+            <div class='de3_name_edit'></div>
+            ";
+            ?>  
             <p class="de3_in_list">
                 Thuộc danh sách
-                <a href="">link list</a>
+                <?php
+                echo "<a href=''>$list_name</a>";
+                ?>
             </p>
+            
         </div>
         <hr>
         <div class="de3_body">
@@ -31,8 +53,8 @@
                             Mô tả
                             <button data-toggle="collapse" data-target="#describe_editable" class="glyphicon glyphicon-edit"></button>
                             <div id="describe_editable" class="collapse">
-                                <form class="describe_edit">
-                                    <input class="describe_box box" placeholder="Thêm mô tả về danh sách này" type="text"></input>
+                                <form class="describe_edit" action="edit-describe.php">
+                                    <input class="describe_box box" placeholder="Thêm mô tả về danh sách này" type="text">
                                     <div class="describe_control">
                                             <input class="control_save" type="submit" value="Lưu" onclick="edit_describe()">
                                             <input class="control_cancel" type="button" value="Hủy">
@@ -40,34 +62,72 @@
                                 </form>          
                             </div>
                         </p>
-                        <div class="describe_content">ND mo ta</div>             
+                        <div class="describe_content">
+                            <?php 
+                            echo $x['describe'];
+                            ?>
+                        </div>             
                     </div>
 
                     <div class="de3_detail">
                         <ul class="list-inline">
                             <li class="de3_detail_label">
-                                <div class="label_head"><h4>Nhãn</h4></div>
-                                <div class="label_body">
-                                    <span class="label_color">nhanx</span>
+                                <div class="box_head">Nhãn</div>
+                                <div class="box_body">
+                                    <?php
+                                    echo $x['label'];
+                                    ?>
                                 </div>
                             </li>
                             <li class="de3_detail_deadline" onload="deadline_display()">
-                                <div class="deadline_head"><h4>Deadline</h4></div>
-                                <div class="deadline_body">
-                                    <span class="deadline_date">ngyaf</span>
+                                <div class="box_head">Deadline</div>
+                                <div class="box_body">
+                                    <?php
+                                    echo $x['deadline'];
+                                    ?>
                                 </div>
                             </li>
                         </ul>
                     </div>
+                    
+                    <div class="de3_progress">
+                        <div class="box_head">Tiến trình</div>
+                        <div class="box_body">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:10%">
+                                    <span class="sr-only"></span>
+                                </div>
+                            </div>
+                            <div>
+                                <ul class="progress_list">
+                                </ul>
+                            </div>
+                            <div class="add-progress">
+                                <input type="text" id="todo_input" placeholder="Title...">
+                                <input class="control_save" type="submit" value="Thêm" onclick="add_new_todo()">
+                                <!-- <span onclick="add_new_todo()" class="control_save">Add</span> -->
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="de3_file">
-                        <div class="file_head"><h4>File đính kèm</h4></div>
-                        <div class="file_body">
+                        <div class="box_head"><h4>File đính kèm</h4></div>
+                        <div class="box_body">
                             <div class="file_list list-group">
-                                <a href="#" class="file_list_item list_group_item active"></a>
-                            </div>
-                            <div class="file_add">
-                                <a class="file_add_button btn" href="#">Thêm tệp đính kèm</a>
+                                <a href="#" class="file_list_item list_group_item active">
+                                    <?php
+                                    include("dbconnect.php");
+                                    $z = mysqli_query($connect, "SELECT * FROM `file` WHERE `taskid`=  ORDER BY `time`");
+                                    if ($mysqli_num_rows($z) > 0){
+                                        while($result_file = mysqli_fetch_array($z)) {
+                                            $link = $result_file['link'];
+                                            echo "<tr>";
+                                            echo "<td>$link</td>";
+                                            echo "</tr>";
+                                          }
+                                    } 
+                                    ?>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -76,13 +136,13 @@
                         <h4>Thêm bình luận</h4>
                         <div class="new_cmt">
                             <div class="cmt_ava"></div>
-                            <div class="cmt_box">
-                                <textarea class="cmt_box_input box" placeholder="Viết bình luận"></textarea>
+                            <form action="add-comment.php" class="cmt_box" method="POST">
+                                <textarea class="cmt_box_input box" placeholder="Viết bình luận" required></textarea>
                                 <div class="cmt_box_control">
                                     <input class="control_save" type="submit" value="Lưu">
                                     <input class="control_cancel" type="button" value="Hủy">
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>   
 
@@ -104,11 +164,13 @@
                     </div>            
             </div>
             <div class="de3_side_bar col-md-4">
-                <h4>Thêm vào thẻ</h4>
+                <h4>Thao tác</h4>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a class="js-change-label  btn btn-link" title="Change label" href="#">Thay đổi nhãn</a></li>
-                    <li><a class="js-change-deadline  btn btn-link" title="Change deadline" href="#">Ngày hết hạn</a></li>
-                    <li><a class="js-change-add-file  btn btn-link" title="Add file" href="#">File đính kèm</a></li>
+                    <li><a class="popup-btn  btn btn-link" title="Change label">Thay đổi nhãn</a></li>
+                    <li><a class="popup-btn  btn btn-link" title="Add member">Thêm thành viên</a></li>
+                    <li><a class="popup-btn  btn btn-link" title="Change deadline" href="#">Ngày hết hạn</a></li>
+                    <li><a class="popup-btn  btn btn-link" title="Add file" href="#">File đính kèm</a></li>
+                    <li><a class="popup-btn  btn btn-link" title="Delete task" href="#">Xóa thẻ</a></li>
                 </ul>
             </div>
         </div>
@@ -117,7 +179,7 @@
     <div class="de3_popup">
         <div class="popup_head">
             <span class="popup_head_title"></span>
-            <span class="popup_close_button icon-close">
+            <span class="popup_close icon-close">
                 <button class="glyphicon glyphicon-remove"></button>
             </span>
         </div>
@@ -134,26 +196,16 @@
                     </ul>
                 </div>
                 <div class="popup_deadline">
-                    <form class="popup_deadline_body">
-                        <div class="deadline_date">
-                            <label>
-                                Ngày
-                                <input class="date_input" type="text" placeholder="Nhập ngày">
-                            </label>
-                        </div>
-                        <div class="deadline_time">
-                            <label>
-                                Giờ
-                                <input class="time_input" type="text" placeholder="Nhập giờ">
-                            </label>
-                        </div>
-                    </form>
+                    <input id="deadline_input">
+                    <script>
+                        $("#deadline_input").datetimepicker()
+                    </script>
                 </div>
                 <div class="popup_addfile">
                     <div class="add_file_computer">
-                        <button class="add_file_btn glyphicon glyphicon-plus">
-                            <form action="" method="post" class="add_file_input"></form>
-                        </button>
+                        <form action="/action_page.php" class="add_file_input">
+                            Select file: <input type="file" name="img" multiple>
+                        </form>
                     </div>
                     <div class="add_file_link">
                         <label for="add_link">Đính kèm liên kết</label>

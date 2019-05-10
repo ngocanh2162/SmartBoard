@@ -12,3 +12,4 @@ function edit_describe(){
     txt = document.getElementsByClassName("describe_box");
     document.getElementsByClassName("describe_content").innerHTML = txt;
 }
+

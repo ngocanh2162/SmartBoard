@@ -1,0 +1,67 @@
+.de3_popup{
+    background: plum;
+    border-radius: 3px;
+    width: 304px;
+    max-height: 889px;
+    overflow: auto; /* Enable scroll if needed */
+    /* display: none; */
+    z-index: 70;
+    position: absolute;
+}
+    .popup_head{
+        height: 40px;
+        position: relative;
+        margin-bottom: 8px;
+        text-align: center;
+    }
+        .popup_close{
+            padding: 10px 12px 10px 8px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+        }
+    .popup_body{
+        padding: 0 12px 12px 12px;
+    }
+        .label_list{
+            list-style: none;
+        }
+            .label1{
+                padding-right: 40px;
+                margin: 0 0 4px 0;
+                position: relative;
+                font-size: 14px;
+                line-height: 20px;
+                font-weight: 400;
+                width: 100%;  
+            }
+                .label{
+                    border-radius: 3px;
+                    font-size: 12px;
+                    font-weight: 700;
+                    min-height: 20px;
+                    padding: 8px;
+                    position: relative;
+                    background-color: red; 
+                    width: 100%;  
+                    box-shadow: -8px 0 #519839;       
+                }
+        .popup_deadline_body{
+            display: block;
+        }
+            .deadline_date{
+                padding-right: 12px;
+            }
+            .deadline_date, .deadline_time{
+                float: left;
+                width: 50%;
+                box-sizing: border-box;
+            }
+                .date_input, .time_input{
+                    margin: 4px 0 12px 0;
+                    width: 100%;
+                }
+        .add_link_input{
+            width: 100%;
+        }
