@@ -30,13 +30,20 @@
     margin: 8px;
 }
 .de3_label{
-    border-radius: 25%;
-    padding: 8px 5px 8px 5px;
-    background-color: yellow;
-}                     
+        border-radius: 25%;
+        padding: 8px 5px 8px 5px;
+        background-color: yellow;
+}        
+ul {
+    margin: 0;
+    padding: 0;
+}                              
 .box{
-    resize: none;
-    height: 108px;
-    width: 90%
-}           
+        resize: none;
+        height: 108px;
+        width: 90%
+}                 
+            
+            
+                    
         
