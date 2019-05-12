@@ -1,5 +1,3 @@
-body{}
-
 .de3_box{
     max-width: 750px;
     width: auto;
@@ -8,45 +6,37 @@ body{}
     position: relative;  
     border-radius: 3px;
 }
-    .de3_close_button{
+.de3_close_button{
         border-radius: 50%;
         font-size: 20px;
         position: absolute;
         top: 5px;
         right: 5px;
-    }
-    .de3_head{}
-        .de3_name{}
-            .de3_name_display{}
-            .de3_name_edit{
-                overflow: hidden;
-                overflow-wrap: break-word;
-                height: 32px;
-                display: none
-            }
-            .de3_in_list{}
-       
-    .de3_body{}
-        .de3_main_col{}
-            .de3_describe{}
-            .de3_detail{}
-                .de3_detail_label{}
-                    .describe_editable{
-                        display: inline;
-                        font-size: 16px;
-                        line-height: 20px;
-                        font-weight: bold;
-                    }
-                        #describe_editable{}
-                            .describe_edit{}
-                                
-                                .describe_control{}
-                                    .control_save{}
-                                    .describe_control_cancel{}
-                .describe_content{}
-            
-        .box{
-            resize: none;
-            height: 108px;
-            width: 90%
-        }
+}
+    
+.de3_name_edit{
+    overflow: hidden;
+    overflow-wrap: break-word;
+    height: 32px;
+    display: none            
+}
+.describe_editable{
+    display: inline;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+}
+.box_body{
+    margin: 8px;
+}
+.de3_label{
+    border-radius: 25%;
+    padding: 8px 5px 8px 5px;
+    background-color: yellow;
+}                     
+.box{
+    resize: none;
+    height: 108px;
+    width: 90%
+}           
+        
