@@ -54,7 +54,7 @@ function add_file(){
       div.remove();
       }
     }
-    de3_popup.style.display = "none";
+    // de3_popup.style.display = "none";
 }
 
 function cancel_file(){

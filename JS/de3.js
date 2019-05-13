@@ -45,14 +45,14 @@ function displayPopup5() {
     popup_file.style.display = "none";
     popup_delete.style.display = "block";
 }
-function closePopup() {
-    de3_popup.style.display = "none";
-}
-window.onclick = function(event) {
-    if (event.target == de3_popup) {
-        de3_popup.style.display = "none";
-    }
-}
+// function closePopup() {
+//     de3_popup.style.display = "none";
+// }
+// window.onclick = function(event) {
+//     if (event.target == de3_popup) {
+//         de3_popup.style.display = "none";
+//     }
+// }
 //deadline
 var deadline = document.getElementById("deadline");
 function change_deadline(){
@@ -90,22 +90,10 @@ function edit_describe(){
 function cancel_describe(){
     document.getElementById("describe_input").value = "";
 }
-//
-var de3_box = document.getElementsByClassName("de3_box");
+// ?????
+var de3_box = document.getElementsById("de3_box1");
 function delete_task(){
-    de3_box.removeChild();
+    de3_popup.remove();
+    de3_box.remove();
 }
-function closeBox(){  
-    de3_box.style.display = "none";
-}
-function displayTask() {
-    de3_box.style.display = "block";
-    de3_popup.style.display = "none";
-    popup_label.style.display = "none";
-    popup_member.style.display = "none";
-    popup_deadline.style.display = "none";
-    popup_file.style.display = "none";
-    popup_delete.style.display = "none";
-}
-
 
