@@ -28,12 +28,7 @@
 }
 .box_body{
     margin: 8px;
-}
-.de3_label{
-        border-radius: 25%;
-        padding: 8px 5px 8px 5px;
-        background-color: yellow;
-}        
+} 
 ul {
     margin: 0;
     padding: 0;
@@ -42,8 +37,13 @@ ul {
         resize: none;
         height: 108px;
         width: 90%
-}                 
-            
-            
+}       
                     
-        
+.de3_label{
+    background-color: yellow;
+    border-radius: 5px;
+    padding: 5px;
+}
+.de3_label:hover{
+    background-color: pink;
+}

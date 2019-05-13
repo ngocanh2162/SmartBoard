@@ -20,7 +20,7 @@
             <button><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="de3_head">
-            <?php
+            <!-- <?php
             include("dbconnect.php");
             $x = mysqli_query($connect, "SELECT * FROM task WHERE `task`.`taskid`=");
             $y = mysqli_query($connect, "SELECT list_name from list where `idlist` = ");
@@ -32,12 +32,12 @@
             <h3 class='de3_name_display' onclick='de3_nameEdit()'>$task_name</h3>
             <div class='de3_name_edit'></div>
             ";
-            ?>
+            ?> -->
             <p class="de3_in_list">
-                Thuộc danh sách
+                <!-- Thuộc danh sách
                 <?php
                 echo "<a href=''>$list_name</a>";
-                ?>
+                ?> -->
             </p>
 
         </div>
@@ -70,9 +70,9 @@
                         <div class="box_body" class="label_list">
                             <span class="de3_label">works</span>
                             <span class="de3_label">home</span>
-                            <?php
+                            <!-- <?php
                             echo $x['label'];
-                            ?>
+                            ?> -->
                         </div>
                     </div>
 
@@ -80,9 +80,9 @@
                         <div class="box_head">Deadline</div>
                         <ul class="box_body" id="deadline">
                             <li>Không có deadline :))</li>
-                            <?php
+                            <!-- <?php
                             echo $x['deadline'];
-                            ?>
+                            ?> -->
                         </ul>
                     </div>
 
@@ -94,13 +94,15 @@
                                     <span class="sr-only"></span>
                                 </div>
                             </div> -->
-                            <ul id="progress_list" >
-                                <li class="todo_checked">test</li>
-                            </ul>
-                            <div>
-                                <input type="text" id="todo_input" placeholder="Thêm công việc" >
-                                <input class="control_save" type="submit" value="Thêm" onclick="add_new_todo()">
-                            </div>
+                            <form action="">
+                                <ul id="progress_list" >
+                                    <li class="todo_checked">test</li>
+                                </ul>
+                                <div>
+                                    <input type="text" id="todo_input" placeholder="Thêm công việc" >
+                                    <input class="control_save" type="submit" value="Thêm" onclick="add_new_todo()">
+                                </div>
+                            </form>
                         </div>
                         
                     </div>
@@ -131,7 +133,7 @@
                         <h4>Thêm bình luận</h4>
                         <div class="new_cmt">
                             <div class="cmt_ava"></div>
-                            <form action="add-comment.php" class="cmt_box" method="POST">
+                            <form class="cmt_box" method="POST">
                                 <textarea class="cmt_box_input box" placeholder="Viết bình luận" required></textarea>
                                 <div class="cmt_box_control">
                                     <input class="control_save" type="submit" value="Lưu">
@@ -175,16 +177,17 @@
         <div class="modal-content">
             <span class="popup_close" onclick="closePopup()">&times;</span>
             <div id="popup_label">
-                <input type="text" id="label_input" placeholder="Thêm nhãn">
-                <input class="control_save" type="submit" value="Thêm" onclick="add_new_label()">
                 <div class="label_list" class="box_body" style="padding-top: 10px">
                     <span class="de3_label">works</span>
                     <span class="de3_label">home</span>
+                    <!-- <?php
+                    ?> -->
                 </div>
-                <script src="JS\label.js"></script>
+                <input type="text" id="label_input" placeholder="Thêm nhãn">
+                <input class="control_save" type="submit" value="Thêm" onclick="add_new_label()">
             </div>
             <div id="popup_member"></div>
-            <div id="popup_deadline" >
+            <div id="popup_deadline">
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker'>
                         <input type='text' class="form-control" id="deadline_input"/>
@@ -201,26 +204,28 @@
             </div>
             <div id="popup_file">
                 <div class="add_file_computer">
-                    <form action="/action_page.php" class="add_file_input">
-                        <label for="add_file">Chọn tệp từ máy tính: </label><input type="file" name="img" multiple>
+                    <form action="" class="add_file_input" method="post">
+                        <label for="add_file">Chọn tệp từ máy tính: </label>
+                        <input type="file" name="files[]" multiple id="add_file_select">
                     </form>
                 </div>
                 <div class="add_file_link">
                     <label for="add_link">Đính kèm liên kết</label>
                     <input id="add_link_input" type="text" placeholder="Dán liên kết vào đây">
                 </div>
-                <input class="control_save" type="submit" value="Lưu" onclick="add_file()">
-                <input class="control_cancel" type="button" value="Hủy">
+                <input class="control_save" type="submit" value="Đính kèm" onclick="add_file()">
+                <input class="control_cancel" type="button" value="Hủy" onclick="cancel_file()">
             </div>
             <div id="popup_delete">
                 <h5>Bạn chắc chắn muốn xóa thẻ này chứ??</h5>
-                <input class="control_save" type="submit" value="Xóa">
-                <input class="control_cancel" type="button" value="Hủy">
+                <input class="control_save" type="submit" value="Xóa" onclick="delete_task()">
+                <input class="control_cancel" type="button" value="Hủy" onclick="closePopup()">
             </div>
         </div>
     </div>
 </body>
+<script src="JS\labele.js"></script>
 <script src="JS\de3.js"></script>
-<script src="JS\file.js"></script>
+<script src="JS\uploadFile.js"></script>
 <script src="JS\progressbar.js"></script>
 </html>

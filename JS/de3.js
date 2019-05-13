@@ -73,6 +73,11 @@ function delete_deadline(){
     var deadlineNew = document.createElement("li");
     deadlineNew.append("Không có deadline!");
     deadline.append(deadlineNew);
+    document.getElementById("deadline_input").value = "";
 }
 
 //
+function delete_task(){
+    var de3_box = document.getElementsByClassName("de3_box");
+    de3_box.removeChild();
+}

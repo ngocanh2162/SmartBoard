@@ -1,5 +1,4 @@
-/* .progress_list{} */
-    
+   
     ul li {
         cursor: pointer;
         position: relative;
@@ -14,14 +13,16 @@
         text-decoration: line-through;
     }
     
-    .progress_close {
+    .progress_close, .file_close{
         position: absolute;
         right: 0;
         top: 0;
         padding: 5px 9px 5px 9px;
     }
-    .progress_close:hover {
+    .label_close{
+        padding: 5px 9px 5px 9px;
+    }
+    .progress_close:hover, .file_close:hover, .label_close:hover {
         background-color: #726f6f;
         color: white;
     }
-    
