@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="CSS\display3.css">
-    <link rel="stylesheet" href="CSS\progressbar.css">
     <link rel="stylesheet" href="CSS\jquery.datetimepicker.min.css">
     <link rel="stylesheet" href="CSS\popup.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -20,7 +19,7 @@
             <button><span class="glyphicon glyphicon-remove"></span></button>
         </div>
         <div class="de3_head">
-            <!-- <?php
+            <?php
             include("dbconnect.php");
             $x = mysqli_query($connect, "SELECT * FROM task WHERE `task`.`taskid`=");
             $y = mysqli_query($connect, "SELECT list_name from list where `idlist` = ");
@@ -32,30 +31,30 @@
             <h3 class='de3_name_display' onclick='de3_nameEdit()'>$task_name</h3>
             <div class='de3_name_edit'></div>
             ";
-            ?> -->
+            ?>
             <p class="de3_in_list">
-                <!-- Thuộc danh sách
+                Thuộc danh sách
                 <?php
                 echo "<a href=''>$list_name</a>";
-                ?> -->
+                ?>
             </p>
 
         </div>
         <hr>
         <div class="de3_body">
             <div class="de3_main_col col-md-8">
-                    <div class="de3_describe">
-                        <p class="describe_editable">
-                            Mô tả
+                    <div id="de3_describe">
+                        <p id="des">
+                            <div class="box_head">Mô tả</div>
                             <button data-toggle="collapse" data-target="#describe_editable" class="glyphicon glyphicon-edit"></button>
                             <div id="describe_editable" class="collapse">
-                                <form class="describe_edit" action="edit-describe.php">
-                                    <input class="describe_box box" placeholder="Thêm mô tả về danh sách này" type="text">
+                                <div class="describe_edit" >
+                                    <input class="box" id="describe_input" placeholder="Thêm mô tả về danh sách này" type="text">
                                     <div class="describe_control">
-                                            <input class="control_save" type="submit" value="Lưu" onclick="edit_describe()">
-                                            <input class="control_cancel" type="button" value="Hủy">
+                                        <input class="control_save" type="submit" value="Lưu" onclick="edit_describe()">
+                                        <input class="control_cancel" type="button" value="Hủy" onclick="cancel_describe()">
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </p>
                         <div class="describe_content">
@@ -67,9 +66,9 @@
 
                     <div class="de3_detail_label">
                         <div class="box_head">Nhãn</div>
-                        <div class="box_body" class="label_list">
-                            <span class="de3_label">works</span>
-                            <span class="de3_label">home</span>
+                        <div class="label_list" class="box_body" >
+                            <div class="de3_label">works</div>
+                            <div class="de3_label">home</div>
                             <!-- <?php
                             echo $x['label'];
                             ?> -->
@@ -94,7 +93,7 @@
                                     <span class="sr-only"></span>
                                 </div>
                             </div> -->
-                            <form action="">
+                            <!-- <form> -->
                                 <ul id="progress_list" >
                                     <li class="todo_checked">test</li>
                                 </ul>
@@ -102,13 +101,13 @@
                                     <input type="text" id="todo_input" placeholder="Thêm công việc" >
                                     <input class="control_save" type="submit" value="Thêm" onclick="add_new_todo()">
                                 </div>
-                            </form>
+                            <!-- </form> -->
                         </div>
                         
                     </div>
 
                     <div class="de3_file">
-                        <div class="box_head"><h4>File đính kèm</h4></div>
+                        <div class="box_head">File đính kèm</div>
                         <div class="box_body">
                             <ul class="list-group" id="file_list">
                                 <!-- <a href="#" class="file_list_item list_group_item active">
@@ -130,38 +129,37 @@
                     </div>
 
                     <div class="de3_comment">
-                        <h4>Thêm bình luận</h4>
+                        <div class="box_head">Thêm bình luận</div>
                         <div class="new_cmt">
-                            <div class="cmt_ava"></div>
-                            <form class="cmt_box" method="POST">
-                                <textarea class="cmt_box_input box" placeholder="Viết bình luận" required></textarea>
+                            <div>
+                                <textarea class="cmt_box_input box" id="cmt_input" placeholder="Viết bình luận" ></textarea>
                                 <div class="cmt_box_control">
-                                    <input class="control_save" type="submit" value="Lưu">
-                                    <input class="control_cancel" type="button" value="Hủy">
+                                    <input class="control_save" type="submit" value="Lưu" onclick="add_cmt()">
+                                    <input class="control_cancel" type="button" value="Hủy" onclick="cancel_cmt()">
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
                     <div class="de3_activity">
-                        <div class="activity_head"><h4>Hoạt động</h4></div>
-                        <div class="activity_body">
-                            <div class="activity_list">
+                        <div class="box_head">Hoạt động</div>
+                        <div class="activity_body" class="box-body">
+                            <div id="activity_list">
                                 <div class="media">
-                                    <div class="media-left">
-                                      <img src="" class="media-object" style="width:60px">
-                                    </div>
-                                    <div class="media-body">
-                                      <h4 class="media-heading">name</h4>
-                                      <p>cmt</p>
-                                    </div>
+                                    <!-- <div class="media-body">
+                                      <h4 class="media-heading">
+                                          name
+                                          <small class="cmt_close"></small>
+                                    </h4>
+                                      <p class="cmt">cmt</p>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
             </div>
             <div class="de3_side_bar col-md-4">
-                <h4>Thao tác</h4>
+                <div class="box_head" style=" text-align:center">Thao tác</div>
                 <ul class="nav nav-pills nav-stacked">
                     <li class="add_label" onclick="displayPopup1()"><a class="btn btn-link">Thêm nhãn</a></li>
                     <li class="add_member" onclick="displayPopup2()"><a class="btn btn-link">Thành viên</a></li>
@@ -177,16 +175,22 @@
         <div class="modal-content">
             <span class="popup_close" onclick="closePopup()">&times;</span>
             <div id="popup_label">
-                <div class="label_list" class="box_body" style="padding-top: 10px">
-                    <span class="de3_label">works</span>
-                    <span class="de3_label">home</span>
+                <div id="label_list1" style="padding-top: 10px">
+                    <div class="de3_label">works</div>
+                    <div class="de3_label">home</div>
+                    <div class="de3_label">works</div>
                     <!-- <?php
                     ?> -->
                 </div>
                 <input type="text" id="label_input" placeholder="Thêm nhãn">
                 <input class="control_save" type="submit" value="Thêm" onclick="add_new_label()">
             </div>
-            <div id="popup_member"></div>
+            <div id="popup_member">
+                <input type="text" id="member_input" placeholder="Thêm thành viên">
+                <input class="control_save" type="submit" value="Thêm" onclick="add_member()">
+                <div id="mem_list">
+                </div>
+            </div>
             <div id="popup_deadline">
                 <div class="form-group">
                     <div class='input-group date' id='datetimepicker'>
@@ -211,7 +215,9 @@
                 </div>
                 <div class="add_file_link">
                     <label for="add_link">Đính kèm liên kết</label>
-                    <input id="add_link_input" type="text" placeholder="Dán liên kết vào đây">
+                    <input id="add_link_input" class="linki" type="text" placeholder="Dán liên kết vào đây">
+                    <label for="link_name">Tên liên kết</label>
+                    <input id="add_link_name" class="linki" type="text" placeholder="Tên liên kết">
                 </div>
                 <input class="control_save" type="submit" value="Đính kèm" onclick="add_file()">
                 <input class="control_cancel" type="button" value="Hủy" onclick="cancel_file()">
@@ -224,8 +230,10 @@
         </div>
     </div>
 </body>
-<script src="JS\labele.js"></script>
 <script src="JS\de3.js"></script>
+<script src="JS\member.js"></script>
+<script src="JS\comment.js"></script>
+<script src="JS\labele.js"></script>
 <script src="JS\uploadFile.js"></script>
 <script src="JS\progressbar.js"></script>
 </html>

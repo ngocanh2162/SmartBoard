@@ -2,10 +2,6 @@ var progressLi = document.getElementById("progress_list");
 var todolist = progressLi.getElementsByTagName("li");
 var i;
 for (i = 0; i < todolist.length; i++) {
-  // var checkBox = document.createElement("input");
-  // checkBox.type = "checkbox";
-  // checkBox.className ="checkBox";
-  // todolist[i].appendChild(checkBox);
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
   span.className = "progress_close";
@@ -14,7 +10,6 @@ for (i = 0; i < todolist.length; i++) {
 }
 
 var progress_close = document.getElementsByClassName("progress_close");
-var i;
 for (i = 0; i < progress_close.length; i++) {
   progress_close[i].onclick = function() {
     var div = this.parentElement;
@@ -36,9 +31,6 @@ function add_new_todo(){
   if (inputValue === '') {
       alert("Phải viết vô ô chứ bạn eiii!");
   } else {
-      // var checkBox = document.createElement("input");
-      // checkBox.type = "checkbox";
-      // li.appendChild(checkBox);
       li.appendChild(t);
       document.getElementById("progress_list").appendChild(li);
   }

@@ -75,9 +75,24 @@ function delete_deadline(){
     deadline.append(deadlineNew);
     document.getElementById("deadline_input").value = "";
 }
-
+// describe
+function edit_describe(){
+    var de3_describe = document.getElementById("de3_describe");
+    de3_describe.removeChild(de3_describe.lastElementChild);
+    var des_input = document.getElementById("describe_input");
+    var inputValue = des_input.value;
+    var li = document.createElement("div");
+    li.className = "describe_content";
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    de3_describe.appendChild(li);
+}
+function cancel_describe(){
+    document.getElementById("describe_input").value = "";
+}
 //
 function delete_task(){
     var de3_box = document.getElementsByClassName("de3_box");
     de3_box.removeChild();
 }
+
