@@ -91,8 +91,21 @@ function cancel_describe(){
     document.getElementById("describe_input").value = "";
 }
 //
+var de3_box = document.getElementsByClassName("de3_box");
 function delete_task(){
-    var de3_box = document.getElementsByClassName("de3_box");
     de3_box.removeChild();
 }
+function closeBox(){  
+    de3_box.style.display = "none";
+}
+function displayTask() {
+    de3_box.style.display = "block";
+    de3_popup.style.display = "none";
+    popup_label.style.display = "none";
+    popup_member.style.display = "none";
+    popup_deadline.style.display = "none";
+    popup_file.style.display = "none";
+    popup_delete.style.display = "none";
+}
+
 
