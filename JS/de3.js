@@ -92,8 +92,8 @@ function cancel_describe(){
 }
 // ?????
 var de3_box = document.getElementsById("de3_box1");
-function delete_task(){
-    de3_popup.remove();
-    de3_box.remove();
-}
+// function delete_task(){
+//     de3_popup.remove();
+//     de3_box.remove();
+// }
 

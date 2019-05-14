@@ -21,11 +21,13 @@
             <div class="de3_head">
                 <?php
                 include("dbconnect.php");
-                $x = mysqli_query($connect, "SELECT * FROM task WHERE `task`.`taskid`=");
-                $y = mysqli_query($connect, "SELECT list_name from list where `idlist` = ");
+                $x = mysqli_query($connect, "SELECT * FROM task,list WHERE `task`.`idtask`= "t01" and `task`.`list`= `list`.`idlist`);
                 $result_task = mysqli_fetch_array($x);
-                $result_list = mysqli_fetch_array($y);
                 $task_name = $x['task_name'];
+                $idtask = $x['idtask'];
+                $idlist = $x['idlist'];
+                $y = mysqli_query($connect, "SELECT `list_name` FROM list WHERE `idlist`= $idlist");
+                $result_list = mysqli_fetch_array($y);
                 $list_name = $y['list_name'];
                 echo "
                 <h3 class='de3_name_display' onclick='de3_nameEdit()'>$task_name</h3>
@@ -94,8 +96,8 @@
                                     </div>
                                 </div> -->
                                 <!-- <form> -->
-                                    <ul id="progress_list" >
-                                        <li class="todo_checked">test</li>
+                                    <ul id="progress_list" class="todolist">
+                                        <!-- <li class="todo_checked">test</li> -->
                                     </ul>
                                     <div>
                                         <input type="text" id="todo_input" placeholder="Thêm công việc" >
@@ -225,7 +227,7 @@
             </div>
             <div id="popup_delete">
                 <h5>Bạn chắc chắn muốn xóa thẻ này chứ??</h5>
-                <input class="control_save" type="submit" value="Xóa" onclick="delete_task()">
+                <input class="control_save" type="submit" value="Xóa" onclick="delete_task()" data-dismiss="modal" >
                 <input class="control_cancel" type="button" value="Hủy" data-dismiss="modal">
             </div>
         </div>

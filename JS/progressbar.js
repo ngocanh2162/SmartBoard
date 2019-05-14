@@ -17,9 +17,9 @@ for (i = 0; i < progress_close.length; i++) {
   }
 }
 
-var list = document.querySelector('ul');
+var list = document.querySelector('todolist');
 list.addEventListener('click', function(ev) {
-  if (ev.target.className === 'checkBox') {
+  if (ev.target.className === 'li') {
     ev.target.classList.toggle('todo_checked');
   }
 }, false);
