@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Trollee</title>
+   <base href="{{asset('')}}">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="CSS/board.css">
+</head>
+<body>  
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index">Trollee</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        @if(Auth::user())
+          <div class="navbar-form navbar-right">
+            <p style="color: pink;">Chào 
+              <a href="userinfo">{{Auth::user()->name}}</a>
+              <a href="dangxuat" style="color: red;">Đăng xuất</a>
+            </p>
+          </div>
+        @else
+          <div class="navbar-form navbar-right">
+            <a type="button" class="btn btn-success" href="dangky">Đăng kí</a>
+            <a type="button" class="btn btn-success" href="dangnhap">Đăng nhập</a>
+          </div>
+        @endif  
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="background-color: #fafbfc; min-height: 700px; max-height: auto">
+    <br><br><br><br><br>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-2">
+      <div class="row">
+          <a class="list-group-item active" href="#">Bảng</a>
+          <a class="list-group-item" href="#">Trang chủ</a>
+          <a class="list-group-item" href="#">Các nhóm</a>
+          <a class="list-group-item" href="#">Nhóm 1</a>
+      </div>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-7">
+      <span class="glyphicon glyphicon-time"></span>
+      <span>Bảng xem gần đây</span>
+      <br>
+      <div class="row">
+        <div class="col-lg-3" class="card_box">
+          <div class="card" class="card-img-top">
+            <img>
+            <span class="card_name">Card title</span>
+          </div>
+          
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card" class="card-img-top">
+            <img>
+            <span class="card_name">Card title</span>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card" class="card-img-top">
+            <img>
+            <span class="card_name">Card title</span>
+          </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card" class="card-img-top">
+              <img>
+              <span class="card_name">Card title</span>
+            </div>
+          </div>
+      </div><br>
+
+      <span class="glyphicon glyphicon-user"></span>
+      <span>Danh sách bảng</span>
+      <br>
+      <div class="row">
+        @foreach($boards as $b)
+        <div class="col-lg-3">
+          <a href="user/board/{{$b->id}}/list.html">
+            <div class="card" class="card-img-top">
+              <img>
+              <span class="card_name">{{$b->name}}</span>
+              <span class="card_delete" data-toggle="modal" data-target="#board_popup">&times;</span>
+            </div>
+          </a>
+        </div>
+        @endforeach
+
+        <div class="col-lg-3">
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-top: 35px; margin-left: 20px;">
+            Tạo bảng mới
+          </button>
+          <div id="myModal"  class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Nhập tên bảng</h4>
+                </div>
+                <form action="" method="POST">
+                  <div class="modal-body">
+                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                    <input type="text" name="name" class="form-control">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary">Lưu bảng</button>
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+          <div id="board_popup" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-sm" role="document">
+              <div class="modal-content" id="board_popup2">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <h5>Bạn chắc chắn muốn xóa bảng này?</h5>
+                  </div>
+                  <div class="modal-footer">
+                      <form action="">
+                          <button type="submit" class="btn btn-primary">Xóa bảng</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                      </form>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <hr>
+  <footer>
+    <div class="col-md-1"></div>
+    <p>&copy; Nhóm 2</p>
+  </footer>
+  <hr>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="JS/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+

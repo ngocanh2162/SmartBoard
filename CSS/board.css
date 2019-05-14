@@ -1,0 +1,45 @@
+.card{
+    width:187px; 
+    height: 96px; 
+    margin-top: 10px;
+}
+
+img{
+    position: relative;  
+    border-radius: 15px;
+    width: 187px;
+    height: 96px;
+    background-color: #172b4d;
+}
+
+.card_name{
+    position: absolute;
+    top: 20px; 
+    margin-left: 10px;
+    color: #fff;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    width: 50%;
+    max-height: 50px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.card_delete{
+    top: 15px; 
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 25px;
+    margin-left: 160px;
+
+    position: absolute;
+    line-height: 20px;
+}
+ 
+.card_delete:hover,
+.card_delete:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

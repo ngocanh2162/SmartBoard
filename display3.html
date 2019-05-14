@@ -19,26 +19,13 @@
         <div class="container-fluid" class="modal-content" id="de3_box2">
             <span class="popup_close" data-dismiss="modal">&times;</span>
             <div class="de3_head">
-                <?php
-                include("dbconnect.php");
-                $x = mysqli_query($connect, "SELECT * FROM task,list WHERE `task`.`idtask`= "t01" and `task`.`list`= `list`.`idlist`);
-                $result_task = mysqli_fetch_array($x);
-                $task_name = $x['task_name'];
-                $idtask = $x['idtask'];
-                $idlist = $x['idlist'];
-                $y = mysqli_query($connect, "SELECT `list_name` FROM list WHERE `idlist`= $idlist");
-                $result_list = mysqli_fetch_array($y);
-                $list_name = $y['list_name'];
-                echo "
+                <
+                
                 <h3 class='de3_name_display' onclick='de3_nameEdit()'>$task_name</h3>
                 <div class='de3_name_edit'></div>
-                ";
-                ?>
                 <p class="de3_in_list">
                     Thuộc danh sách
-                    <?php
-                    echo "<a href=''>$list_name</a>";
-                    ?>
+                    
                 </p>
 
             </div>
@@ -60,9 +47,6 @@
                                 </div>
                             </p>
                             <div class="describe_content">
-                                <?php
-                                echo $x['describe'];
-                                ?>
                             </div>
                         </div>
 
@@ -71,9 +55,7 @@
                             <div class="label_list" class="box_body" >
                                 <div class="de3_label">works</div>
                                 <div class="de3_label">home</div>
-                                <!-- <?php
-                                echo $x['label'];
-                                ?> -->
+                                
                             </div>
                         </div>
 
@@ -81,9 +63,6 @@
                             <div class="box_head">Deadline</div>
                             <ul class="box_body" id="deadline">
                                 <li>Không có deadline :))</li>
-                                <!-- <?php
-                                echo $x['deadline'];
-                                ?> -->
                             </ul>
                         </div>
 
@@ -112,20 +91,6 @@
                             <div class="box_head">File đính kèm</div>
                             <div class="box_body">
                                 <ul class="list-group" id="file_list">
-                                    <!-- <a href="#" class="file_list_item list_group_item active">
-                                        <?php
-                                        include("dbconnect.php");
-                                        $z = mysqli_query($connect, "SELECT * FROM `file` WHERE `taskid`=  ORDER BY `time`");
-                                        if ($mysqli_num_rows($z) > 0){
-                                            while($result_file = mysqli_fetch_array($z)) {
-                                                $link = $result_file['link'];
-                                                echo "<tr>";
-                                                echo "<td>$link</td>";
-                                                echo "</tr>";
-                                            }
-                                        }
-                                        ?>
-                                    </a> -->
                                 </ul>
                             </div>
                         </div>
@@ -182,8 +147,7 @@
                     <div class="de3_label">works</div>
                     <div class="de3_label">home</div>
                     <div class="de3_label">works</div>
-                    <!-- <?php
-                    ?> -->
+                    
                 </div>
                 <input type="text" id="label_input" placeholder="Thêm nhãn">
                 <input class="control_save" type="submit" value="Thêm" onclick="add_new_label()">

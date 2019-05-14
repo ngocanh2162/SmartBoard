@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Trollee</title>
+   <base href="{{asset('')}}">
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=devide-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="CSS/list.css">
+   <link rel="stylesheet" href="CSS\display3.css">
+</head>
+<body style="min-width: 1200px; max-width: auto;">  
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index">Trollee</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        @if(Auth::user())
+          <div class="navbar-form navbar-right">
+            <p style="color: pink;">Chào 
+              <a href="user/{{Auth::user()->name}}">{{Auth::user()->name}}</a>
+              <a href="dangxuat" style="color: red;">Đăng xuất</a>
+            </p>
+          </div>
+        @else
+          <div class="navbar-form navbar-right">
+            <a type="button" class="btn btn-success" href="dangky">Đăng kí</a>
+            <a type="button" class="btn btn-success" href="dangnhap">Đăng nhập</a>
+          </div>
+        @endif  
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+  <div class="container" style="height: 650px;">
+    <div id="task_list">
+        <div class="task_box">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="list_name">{{$l->name}}</span>
+                <span class="list_delele">&times;</span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-striped task-table">
+                <tbody class="list_display"></tbody>
+                    <tr class="task_in_list">
+                      <td class="table-text">
+                          <div>{{ $t->name1 }}</div>
+                      </td>
+                      <td>
+                        <td>
+                          <form action="" method="POST" class="task_delete_in_list" >
+                            <button type="submit" class="btn btn-danger">Xóa</button>
+                          </form>
+                        </td>
+                      </td>
+                    </tr>
+                    <tr class="task_in_list">
+                        <td class="table-text">
+                            <div>{{ $t->name2 }}</div>
+                        </td>
+                        <td>
+                          <td>
+                            <form action="" method="POST" class="task_delete_in_list" >
+                              <button type="submit" class="btn btn-danger" >Xóa</button>
+                            </form>
+                          </td>
+                        </td>
+                      </tr>
+                </tbody>
+                <tfoot><tr><td><button class="add_task_in_list">Thêm</button></td></tr></tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+
+      <div class="task_box">
+        <div class="panel panel-default">
+            <div class="panel-heading" >
+                <input type="text" name="name" dir="auto" id="new_list_input">
+            </div>
+            <div class="panel-body" style="display:grid">
+                <input class="control_save" type="submit" value="Thêm" id="add_list_btn">
+            </div>
+        </div>
+        
+      </div>
+
+
+    
+  </div>
+
+
+  <hr>
+  <footer>
+    <div class="col-md-1"></div>
+    <p>&copy; Nhóm 2</p>
+  </footer>
+  <hr>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="JS/bootstrap.min.js"></script>
+  <script src="JS/list.js"></script>
+</body>
+</html>
+
+
+
+

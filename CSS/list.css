@@ -1,0 +1,33 @@
+#task_list{
+    display: inline-flex;
+}
+.task_box{
+    max-width: 210px;
+    display: inline-grid;
+    margin: 10px;
+}
+#new_list_input{
+    width: 100%;
+}
+#add_list_btn{
+    width: 30%;
+    float: right;
+}
+.list_delele {
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    border-radius: 15px;
+}
+ 
+.list_delele:hover,
+.list_delele:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.panel-body{
+    margin: 5px;
+    padding: 5px
+}
