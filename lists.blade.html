@@ -33,13 +33,14 @@
     </div>
   </div>
   <br><br><br><br>
-  <div class="container" style="height: 650px;">
+  <div class="container" style="min-height: 400px; max-height: auto ">
     <div id="task_list">
         <div class="task_box">
           <div class="panel panel-default">
             <div class="panel-heading">
-                <span class="list_name">{{$l->name}}</span>
-                <span class="list_delele">&times;</span>
+                <span class="list_name">ghvt iugth erbgve ghigulerhtiulvhtuilhgfbgreg eguiegteiulgtrluihgtriugh</span>
+                <span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#listname_edit_popup"></span>
+                <span class="list_delele" data-toggle="modal" data-target="#listname_delete_popup">&times;</span>
             </div>
             <div class="panel-body">
               <table class="table table-striped task-table">
@@ -68,32 +69,86 @@
                           </td>
                         </td>
                       </tr>
+                      <tr class="task_in_list">
+                        <td class="table-text">
+                            <div>fskhbfrb kreugteuhetuightegiue</div>
+                        </td>
+                        <td>
+                          <td>
+                            <form action="" method="POST" class="task_delete_in_list" >
+                              <button type="submit" class="btn btn-danger" >Xóa</button>
+                            </form>
+                          </td>
+                        </td>
+                      </tr>
+                      <tr class="task_in_list">
+                        <td class="table-text">
+                            <div>{{ $t->name2 }}</div>
+                        </td>
+                        <td>
+                          <td>
+                            <form action="" method="POST" class="task_delete_in_list" >
+                              <button type="submit" class="btn btn-danger" >Xóa</button>
+                            </form>
+                          </td>
+                        </td>
+                      </tr>
                 </tbody>
                 <tfoot><tr><td><button class="add_task_in_list">Thêm</button></td></tr></tfoot>
               </table>
             </div>
           </div>
         </div>
-        
-    </div>
-
-      <div class="task_box">
-        <div class="panel panel-default">
-            <div class="panel-heading" >
-                <input type="text" name="name" dir="auto" id="new_list_input">
-            </div>
-            <div class="panel-body" style="display:grid">
-                <input class="control_save" type="submit" value="Thêm" id="add_list_btn">
-            </div>
+        <div class="task_box">
+          <div class="panel panel-default">
+              <div class="panel-heading" >
+                  <input type="text" name="name" dir="auto" id="new_list_input">
+              </div>
+              <div class="panel-body" style="display:grid">
+                  <input class="control_save" type="submit" value="Thêm" id="add_list_btn">
+              </div>
+          </div>
         </div>
-        
-      </div>
-
-
-    
+    </div>
   </div>
 
-
+  <div id="listname_edit_popup" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content" id="list_popup2">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+              <input type="text" placeholder="Nhập tên mới của thẻ" style="width:100%">
+            </div>
+            <div class="modal-footer">
+                <form action="">
+                    <button type="submit" class="btn btn-primary">Sửa</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+    <div id="listname_delete_popup" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content" id="list_popup2">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <h5>Bạn chắc chắn muốn xóa thẻ này?</h5>
+              </div>
+              <div class="modal-footer">
+                  <form action="">
+                      <button type="submit" class="btn btn-primary">Xóa thẻ</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                  </form>
+              </div>
+          </div>
+        </div>
+      </div>
   <hr>
   <footer>
     <div class="col-md-1"></div>

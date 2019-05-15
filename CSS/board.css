@@ -4,12 +4,16 @@
     margin-top: 10px;
 }
 
+
 img{
     position: relative;  
     border-radius: 15px;
     width: 187px;
     height: 96px;
     background-color: #172b4d;
+}
+.img:hover{
+    background-color: rgb(237, 100, 237)
 }
 
 .card_name{
@@ -25,20 +29,25 @@ img{
     overflow: hidden;
     word-wrap: break-word;
 }
-.card_delete{
+.card_delete, .card_edit{
     top: 15px; 
     color: #888;
     font-weight: bold;
     float: right;
     font-size: 25px;
     margin-left: 160px;
-
     position: absolute;
     line-height: 20px;
 }
+.card_edit{
+        font-size: 15px;
+        margin-left: 145px;
+    }
+}
+
  
-.card_delete:hover,
-.card_delete:focus {
+.card_delete:hover, .card_edit:hover,
+.card_delete:focus,. .card_edit:focus{
     color: #000;
     text-decoration: none;
     cursor: pointer;

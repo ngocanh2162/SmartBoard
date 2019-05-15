@@ -1,10 +1,14 @@
 #task_list{
     display: inline-flex;
+    overflow: -webkit-paged-y;
+    min-height: 100px;
+    max-height: auto;
 }
 .task_box{
-    max-width: 210px;
+    width: 250px;
     display: inline-grid;
     margin: 10px;
+    height: -webkit-fill-available;
 }
 #new_list_input{
     width: 100%;
@@ -12,6 +16,10 @@
 #add_list_btn{
     width: 30%;
     float: right;
+}
+.list_name{
+    overflow: hidden;
+    word-wrap: break-word;
 }
 .list_delele {
     color: #888;

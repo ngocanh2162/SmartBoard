@@ -88,16 +88,20 @@
             <div class="card" class="card-img-top">
               <img>
               <span class="card_name">{{$b->name}}</span>
-              <span class="card_delete" data-toggle="modal" data-target="#board_popup">&times;</span>
+              <span class="card_edit" data-toggle="modal" data-target="#board_edit_popup">&Xi;</span>
+              <span class="card_delete" data-toggle="modal" data-target="#board_delete_popup">&times;</span>
             </div>
           </a>
         </div>
         @endforeach
 
         <div class="col-lg-3">
-          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="margin-top: 35px; margin-left: 20px;">
-            Tạo bảng mới
-          </button>
+            <div class="card" class="card-img-top" data-toggle="modal" data-target="#myModal">
+                <img style="background-color: grey;">
+                <span class="card_name" style="left: 50px;font-size: 14px;top: 35px;">Tạo bảng mới</span>
+            </div>
+
+          
           <div id="myModal"  class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog modal-sm" role="document">
               <div class="modal-content">
@@ -118,23 +122,41 @@
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div><!-- /.modal -->
+        </div>
+        <div id="board_delete_popup" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content" id="board_popup2">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <h5>Bạn chắc chắn muốn xóa bảng này?</h5>
+                </div>
+                <div class="modal-footer">
+                    <form action="">
+                        <button type="submit" class="btn btn-primary">Xóa bảng</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
 
-          <div id="board_popup" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-sm" role="document">
-              <div class="modal-content" id="board_popup2">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  </div>
-                  <div class="modal-body">
-                    <h5>Bạn chắc chắn muốn xóa bảng này?</h5>
-                  </div>
-                  <div class="modal-footer">
-                      <form action="">
-                          <button type="submit" class="btn btn-primary">Xóa bảng</button>
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
-                      </form>
-                    </div>
-              </div>
+        <div id="board_edit_popup" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content" id="board_popup2">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <input type="text" placeholder="Nhập tên mới của bảng" style="width:100%">
+                </div>
+                <div class="modal-footer">
+                    <form action="">
+                        <button type="submit" class="btn btn-primary">Sửa</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    </form>
+                </div>
             </div>
           </div>
         </div>
