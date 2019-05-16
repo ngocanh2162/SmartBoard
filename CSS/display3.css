@@ -80,6 +80,7 @@ ul li.todo_checked {
     font-size: 20px;
 }
 
+
 .progress_close:hover, .file_close:hover, .member_close:hover, .label_close:hover , .cmt_close:hover, .done_progress:hover{
     background-color: #726f6f;
     color: white;
