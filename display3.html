@@ -51,8 +51,14 @@
                         <div class="de3_detail_label">
                             <div class="box_head">Nhãn</div>
                             <div class="label_list" class="box_body" >
-                                <div class="de3_label">works</div>
-                                <div class="de3_label">home</div>
+                                <div class="de3_label">
+                                    works
+                                    <span class="label_close">&times;</span>
+                                </div>
+                                <div class="de3_label">
+                                    home
+                                    <span class="label_close">&times;</span>
+                                </div>
                                 
                             </div>
                         </div>
@@ -75,6 +81,10 @@
                                 <!-- <form> -->
                                     <ul id="progress_list" class="todolist">
                                         <!-- <li class="todo_checked">test</li> -->
+                                        <li>sjdfnfjnlfnlfnfknflknflkfnlfknfnlfknklvnslvnslflknsvvjfnlkgn lgtlnktglkt
+                                            <span class="done_progress">&radic;</span>
+                                            <span class="progress_close">&times;</span>
+                                        </li>
                                     </ul>
                                     <div>
                                         <input type="text" id="todo_input" placeholder="Thêm công việc" >
@@ -89,6 +99,9 @@
                             <div class="box_head">File đính kèm</div>
                             <div class="box_body">
                                 <ul class="list-group" id="file_list">
+                                    <li>trello
+                                        <span class="file_close">&times;</span>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -141,10 +154,16 @@
         <div class="modal-content" id="de3_popup2">
             <span class="popup_close" onclick="closePopup()" data-dismiss="modal">&times;</span>
             <div id="popup_label">
-                <div id="label_list1" style="padding-top: 10px">
-                    <div class="de3_label">works</div>
-                    <div class="de3_label">home</div>
-                    <div class="de3_label">works</div>
+                <div id="label_list" style="padding-top: 10px">
+                    <div class="de3_label">
+                        works
+                        <span class="label_close">&times;</span>
+                    </div>
+                    <div class="de3_label">
+                        home
+                        <span class="label_close">&times;</span>
+                    </div>
+                                
                     
                 </div>
                 <input type="text" id="label_input" placeholder="Thêm nhãn">
