@@ -19,15 +19,15 @@
         @if(Auth::user())
           <div class="navbar-form navbar-right">
             <p style="color: pink;">Chào 
-              <a href="user/{{Auth::user()->name}}">{{Auth::user()->name}}</a>
+              <a href="user/{{Auth::user()->name}}">ngocanh2162</a>
               <a href="dangxuat" style="color: red;">Đăng xuất</a>
             </p>
           </div>
         @else
-          <div class="navbar-form navbar-right">
+          <!-- <div class="navbar-form navbar-right">
             <a type="button" class="btn btn-success" href="dangky">Đăng kí</a>
             <a type="button" class="btn btn-success" href="dangnhap">Đăng nhập</a>
-          </div>
+          </div> -->
         @endif  
       </div>
     </div>
@@ -38,7 +38,7 @@
         <div class="task_box">
           <div class="panel panel-default">
             <div class="panel-heading">
-                <span class="list_name">ghvt iugth erbgve ghigulerhtiulvhtuilhgfbgreg eguiegteiulgtrluihgtriugh</span>
+                <span class="list_name">list1</span>
                 <span class="glyphicon glyphicon-edit" data-toggle="modal" data-target="#listname_edit_popup"></span>
                 <span class="list_delele" data-toggle="modal" data-target="#listname_delete_popup">&times;</span>
             </div>
@@ -47,7 +47,7 @@
                 <tbody class="list_display"></tbody>
                     <tr class="task_in_list">
                       <td class="table-text">
-                          <div>{{ $t->name1 }}</div>
+                          <div>Nhz</div>
                       </td>
                       <td>
                         <td>
@@ -94,7 +94,10 @@
                         </td>
                       </tr>
                 </tbody>
-                <tfoot><tr><td><button class="add_task_in_list">Thêm</button></td></tr></tfoot>
+                <tfoot><tr><td>
+                  <button class="add_task_in_list" data-toggle="modal" data-target="#task_add_popup">Thêm</button>
+                  
+                </td></tr></tfoot>
               </table>
             </div>
           </div>
@@ -148,7 +151,26 @@
               </div>
           </div>
         </div>
+    </div>
+    <div id="task_add_popup" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content" id="list_popup2">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              <div class="modal-body">
+                <input type="text" placeholder="Nhập tên của thẻ" style="width:100%">
+              </div>
+              <div class="modal-footer">
+                  <form action="">
+                      <button type="submit" class="btn btn-primary">Thêm</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                  </form>
+              </div>
+          </div>
+        </div>
       </div>
+    </div>
   <hr>
   <footer>
     <div class="col-md-1"></div>
